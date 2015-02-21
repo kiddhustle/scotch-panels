@@ -1,5 +1,15 @@
 // Start with Semicolon to block
-;(function($) {
+;(function(root, factory){
+  if(typeof define === 'function' && define.amd){
+    define(['jquery', factory]);
+  }
+  else if(typeof exports === 'object'){
+    module.exports = factory(require( 'jquery' ));
+  }
+  else {
+    root.scotchPanel = factory(root.$);
+  }
+})( this, function($) {
 
     // Enable Strict Mode
     'use strict';
